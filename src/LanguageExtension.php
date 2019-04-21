@@ -7,6 +7,8 @@ namespace Archette\Language;
 use Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver;
 use Nette\DI\CompilerExtension;
 use Nette\DI\Definitions\ServiceDefinition;
+use Nette\Schema\Expect;
+use Nette\Schema\Schema;
 use Rixafy\Language\LanguageFacade;
 use Rixafy\Language\LanguageFactory;
 use Rixafy\Language\LanguageProvider;
@@ -14,6 +16,13 @@ use Rixafy\Language\LanguageRepository;
 
 class LanguageExtension extends CompilerExtension
 {
+	public function getConfigSchema(): Schema
+	{
+		return Expect::structure([
+			'defaultLanguage' => Expect::string('en')
+		]);
+	}
+
 	public function beforeCompile()
 	{
 		/** @var ServiceDefinition $serviceDefinition */
@@ -33,6 +42,7 @@ class LanguageExtension extends CompilerExtension
 			->setFactory(LanguageFactory::class);
 
 		$this->getContainerBuilder()->addDefinition($this->prefix('languageProvider'))
-			->setFactory(LanguageProvider::class);
+			->setFactory(LanguageProvider::class)
+			->addSetup('provide', [$this->config->defaultLanguage]);
 	}
 }
