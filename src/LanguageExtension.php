@@ -9,6 +9,8 @@ use Nette\DI\CompilerExtension;
 use Nette\DI\Definitions\ServiceDefinition;
 use Nette\Schema\Expect;
 use Nette\Schema\Schema;
+use Rixafy\Currency\Command\CurrencyUpdateCommand;
+use Rixafy\Language\Command\LanguageUpdateCommand;
 use Rixafy\Language\LanguageFacade;
 use Rixafy\Language\LanguageFactory;
 use Rixafy\Language\LanguageProvider;
@@ -44,5 +46,9 @@ class LanguageExtension extends CompilerExtension
 		$this->getContainerBuilder()->addDefinition($this->prefix('languageProvider'))
 			->setFactory(LanguageProvider::class)
 			->addSetup('provide', [$this->config->defaultLanguage]);
+
+		$this->getContainerBuilder()->addDefinition($this->prefix('languageUpdateCommand'))
+			->setFactory(LanguageUpdateCommand::class)
+			->addTag('console.command', 'rixafy:language:update');
 	}
 }
