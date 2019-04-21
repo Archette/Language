@@ -12,6 +12,7 @@
     "minimum-stability": "dev",
     "require": {
         "rixafy/language": "dev-master",
+        "nette/schema": "^3.0",
         "nette/di": "^3.0"
     },
     "autoload": {
