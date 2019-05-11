@@ -24,14 +24,14 @@ class LanguageExtension extends CompilerExtension
 		]);
 	}
 
-	public function beforeCompile()
+	public function beforeCompile(): void
 	{
 		/** @var ServiceDefinition $serviceDefinition */
 		$serviceDefinition = $this->getContainerBuilder()->getDefinitionByType(AnnotationDriver::class);
 		$serviceDefinition->addSetup('addPaths', [['vendor/rixafy/language']]);
 	}
 
-	public function loadConfiguration()
+	public function loadConfiguration(): void
 	{
 		$this->getContainerBuilder()->addDefinition($this->prefix('languageFacade'))
 			->setFactory(LanguageFacade::class);
