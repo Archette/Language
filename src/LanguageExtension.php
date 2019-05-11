@@ -9,7 +9,6 @@ use Nette\DI\CompilerExtension;
 use Nette\DI\Definitions\ServiceDefinition;
 use Nette\Schema\Expect;
 use Nette\Schema\Schema;
-use Rixafy\Currency\Command\CurrencyUpdateCommand;
 use Rixafy\Language\Command\LanguageUpdateCommand;
 use Rixafy\Language\LanguageFacade;
 use Rixafy\Language\LanguageFactory;
