@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Archette\Language;
 
-use Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver;
+use Doctrine\Common\Persistence\Mapping\Driver\MappingDriver;
 use Nette\DI\CompilerExtension;
 use Nette\DI\Definitions\ServiceDefinition;
 use Nette\Schema\Expect;
@@ -27,7 +27,7 @@ class LanguageExtension extends CompilerExtension
 	public function beforeCompile(): void
 	{
 		/** @var ServiceDefinition $serviceDefinition */
-		$serviceDefinition = $this->getContainerBuilder()->getDefinitionByType(AnnotationDriver::class);
+		$serviceDefinition = $this->getContainerBuilder()->getDefinitionByType(MappingDriver::class);
 		$serviceDefinition->addSetup('addPaths', [['vendor/rixafy/language']]);
 	}
 
