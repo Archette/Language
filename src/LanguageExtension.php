@@ -44,7 +44,7 @@ class LanguageExtension extends CompilerExtension
 
 		$this->getContainerBuilder()->addDefinition($this->prefix('languageProvider'))
 			->setFactory(LanguageProvider::class)
-			->addSetup('provide', [$this->config->defaultLanguage]);
+			->addSetup('setup', [$this->config->defaultLanguage]);
 
 		$this->getContainerBuilder()->addDefinition($this->prefix('languageUpdateCommand'))
 			->setFactory(LanguageUpdateCommand::class)
