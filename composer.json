@@ -9,9 +9,11 @@
             "email": "rixafy@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
-        "rixafy/language": "dev-master",
+        "rixafy/language": "^1.0"
+    },
+    "require-dev": {
         "nette/di": "^3.0"
     },
     "autoload": {
