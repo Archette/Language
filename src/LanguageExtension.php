@@ -28,7 +28,7 @@ class LanguageExtension extends CompilerExtension
 	{
 		if (class_exists('Nettrine\ORM\DI\Helpers\MappingHelper')) {
 			\Nettrine\ORM\DI\Helpers\MappingHelper::of($this)
-				->addAnnotation('Rixafy\Language', __DIR__ . '/../../../rixafy/language');
+				->addAttribute('Rixafy\Language', __DIR__ . '/../../../rixafy/language');
 		} else {
 			/** @var ServiceDefinition $annotationDriver */
 			$annotationDriver = $this->getContainerBuilder()->getDefinitionByType(MappingDriver::class);
